@@ -1,2 +1,0 @@
-# StarWarsPayStack
-Created with CodeSandbox
