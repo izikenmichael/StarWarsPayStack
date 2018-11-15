@@ -1,0 +1,15 @@
+<form class="sw-form px-4 rounded py-2 rgba-amber-light">
+  <mat-form-field class="sw-field" [@slideUpDown]>
+    <input #v
+    (click)="clearInput(); v.blur()" 
+    class="sw-field form-control-center" 
+    type="text" 
+    placeholder="Enter the name of your favourite Star Wars movie" 
+    aria-label="Movie List" matInput [formControl]="movieListControl" [matAutocomplete]="movieList">
+    <mat-autocomplete class="amber" #movieList="matAutocomplete">
+      <mat-option (click)="onSelect(movie)" *ngFor="let movie of filteredList | async" [value]="movie.title">
+        {{movie?.title}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

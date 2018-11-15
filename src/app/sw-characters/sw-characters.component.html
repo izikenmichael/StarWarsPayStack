@@ -1,0 +1,49 @@
+<mat-card [@fadeInOutTranslate] *ngIf="characters" class="rgba-white-light gender-filter mr-3 rounded p-3">
+  <!-- <p class="amber-text font-weight-light">Characters List</p> -->
+  <div class="example-button-row float-right">
+    <button [ngClass]="{'warning-color': !filterValue}" (click)="filterGender()" mat-raised-button class="bg-transparent">All
+      Characters</button>
+    <button [ngClass]="{'warning-color': filterValue === 'male'}" (click)="filterGender('male')" mat-raised-button
+      class="bg-transparent">Male</button>
+    <button [ngClass]="{'warning-color': filterValue === 'female'}" (click)="filterGender('female')" mat-raised-button
+      class="bg-transparent">Female</button>
+  </div>
+</mat-card>
+<mat-card [@fadeInOutTranslate] [ngStyle]="toTop()" class="rgba-white-light character mr-3 rounded">
+  <mat-table class="mat-elevation-z8 w-100 h-100 character-table" [dataSource]="dataSource" matSort>
+    <!-- Name Column -->
+    <ng-container matColumnDef="char_id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+      <mat-cell *matCellDef="let char"> {{char.char_id}} </mat-cell>
+      <mat-footer-cell *matFooterCellDef>Total </mat-footer-cell>
+    </ng-container>
+
+    <!-- Gender Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let char"> {{char.name}} </mat-cell>
+      <mat-footer-cell *matFooterCellDef> {{dataSource?.data?.length}} Characters </mat-footer-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="gender">
+      <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+      <mat-cell class="text-center" *matCellDef="let char">
+        {{char.gender_abrv}}
+      </mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="height">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Height </mat-header-cell>
+      <mat-cell *matCellDef="let char"> {{char.height}}m </mat-cell>
+      <mat-footer-cell *matFooterCellDef> {{getTotalHeights()}}</mat-footer-cell>
+    </ng-container>
+    <mat-header-row class="sw-header" *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row class="bg-transparent" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-footer-row class="sw-footer" *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
+  </mat-table>
+  <app-loader [isLoading]="loading"></app-loader>
+</mat-card>
+<app-error-notification [errorMessage]="errorMessage"></app-error-notification>

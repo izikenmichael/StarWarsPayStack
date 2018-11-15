@@ -1,0 +1,10 @@
+<mat-card [@slideUpDown] class="rgba-white-light crawl mr-3 p-3 rounded amber-text">
+    <mat-card-content *ngIf="movie" id="movingCrawl">
+      <img src="{{movie?.banner}}" class="img-fluid rounded mb-3" alt="Movie Banner">
+      <p>
+        {{movie?.opening_crawl}}
+      </p>
+      <small>Produced By: {{movie?.producer}}</small>
+    </mat-card-content>
+    <app-loader [isLoading]="loading"></app-loader>
+</mat-card>

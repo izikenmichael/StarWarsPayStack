@@ -1,14 +1,12 @@
-<!-- The content below is only a placeholder and can be replaced. -->
 <mat-toolbar class="transparent" color="">
   <button
     type="button"
     aria-label="Toggle sidenav"
     mat-icon-button
     (click)="drawer.toggle()"
-    *ngIf="isHandset$ | async"
-  >
+    *ngIf="isHandset$ | async">
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
-  <span><img src="../assets/images/logo.png" class="img-fluid" alt=""/></span>
+  <span><img src="../assets/images/logo.png" class="img-fluid" alt=""></span>
 </mat-toolbar>
 <app-sw-movies></app-sw-movies>
