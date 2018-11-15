@@ -1,0 +1,28 @@
+.crawl {
+    top: 0;
+    right: 0;
+    position: absolute;
+    width: 90%;
+    height: 450px;
+    overflow: hidden;
+}
+
+#toBottom {
+    position: relative;
+    top: -300px;
+  }
+
+@keyframes movingCrawlBottomToTop {
+    0% {
+      top: 450px;
+    }
+    100% {
+      top: -400px;
+    }
+  }
+  #movingCrawl {
+    animation: movingCrawlBottomToTop 20s linear infinite;
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+  }

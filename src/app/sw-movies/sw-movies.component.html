@@ -1,0 +1,25 @@
+<ng-container>
+
+  <mat-grid-list *ngIf="movies" cols="1" columnGap="50px" rowHeight="200px">
+    <mat-grid-tile [@fadeInOutTranslate]>
+      <mat-card class="text-center grey-text">
+        <p class="font-weight-light small">Find your favourite Star Wars movies and characters</p>
+        <app-sw-select (isSelected)="selected = $event"></app-sw-select>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <img *ngIf="!selectedMovie" [@fadeInOutTranslate]  src="../../assets/images/logo-lg.png" class="img-fluid d-flex mx-auto mt-4" alt="Large Logo">
+  <mat-grid-list *ngIf="selected" cols="2" rowHeight="600px">
+    <mat-grid-tile>
+      <app-sw-opening-crawl></app-sw-opening-crawl>
+    </mat-grid-tile>
+    <mat-grid-tile [@slideUpDown]>
+      <app-sw-characters class="w-75 mx-auto"></app-sw-characters>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</ng-container>
+
+<!-- Page loader template -->
+<app-loader [isLoading]="loading"></app-loader>
+<app-error-notification [errorMessage]="errorMessage"></app-error-notification>
